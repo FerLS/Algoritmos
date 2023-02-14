@@ -1,0 +1,118 @@
+ -Grupo 3.1-
+ Fernando Álvarez Rodríguez de Legísima 
+ fernando.alvarezr@udc.es
+ Brais Sánchez Ferreiro
+ brais.sferreiro@udc.es
+
+#Informe práctica 4:
+   El objetivo de esta práctica es estudiar la complejidad computacional 
+   empírica de las operaciones de crear y ordenar montículo de n posiciones.
+
+ +Características de la máquina:
+ 
+  Equipo: ROG-Zephyrus-S17-GX701LWS
+  SSOO: Ubuntu 22.04.1 LTS 64 bits
+  Procesador: Intel® Core™ i7-10750H CPU @ 2.60GHz × 12
+  Memoria: 32,0 GiB RAM
+  Kernel: 5.15.0-50-generic
+  Compilador: gcc 11.2.0
+ 
+ +Unidades de medida:
+  Todas las mediciones estan realizadas en microsegundos.
+  
+ +Método:
+  En esta práctica 4 utilizamos los algoritmos de crear y ordenar montículos,
+  para crear montículos de máximos. Para ello nos apoyaremos en funciones como
+  hundir o eliminar_mayor.
+  
+  Se lleva a cabo un estudio de diversos valores de n, en la creación se
+  insertan elementos aleatorios de [-n,....,n] en un montículo desordenados,
+  se ordenan como un montículo, y luego se ordenan de menor a mayor usando 
+  la ordenación por motículos.
+  
+  Cuando el tiempo es menor que 500 (*) se ejecuta un bucle de k repeticiones
+  y luego se hace una media de todos esos tiempos.
+  
+ +Resultados:
+ 
+  Creacion de Monticulos
+ ______[N]____________[t(n)]_________[O(n)]_____ 
+       500      |        12.340 |    0.02468000
+      1000      |        21.030 |    0.02103000
+      2000      |        38.907 |    0.01945350
+      4000      |        75.003 |    0.01875075
+      8000      |       148.140 |    0.01851750
+     16000      |       294.623 |    0.01841394
+     32000      |       588.000 |    0.01837500
+     64000      |      1177.000 |    0.01839063
+    128000      |      2380.000 |    0.01859375
+
+Monticulo Ascendente
+         - Cota subestimada f(n): n^(1.1)*log(n)
+         - Cota ajustada g(n): n^(1.19)*log(n)
+         - Cota sobreestimada h(n): n^(1.32)*log(n)
+
+ ______[N]____________[t(n)]_______[t(n)/f(n)]_______[t(n)/g(n)]_____[t(n)/h(n)]______[t<500]_ 
+       500      |        54.212 |    0.36194466 |    0.20688780 |    0.09222927     |  (*)
+      1000      |       120.911 |    0.41860340 |    0.22480334 |    0.09158045     |  (*)
+      2000      |       259.203 |    0.46065118 |    0.23242321 |    0.08652579     |  (*)
+      4000      |       541.000 |    0.48943825 |    0.23201310 |    0.07893047     |
+      8000      |      1126.000 |    0.51494833 |    0.22934304 |    0.07129907     |
+     16000      |      2329.000 |    0.53521503 |    0.22395332 |    0.06362414     |
+     32000      |      4858.000 |    0.55810701 |    0.21940877 |    0.05696190     |
+     64000      |     10232.000 |    0.58503019 |    0.21608374 |    0.05126473     |
+    128000      |     21344.000 |    0.60498450 |    0.20994008 |    0.04551537     |
+    
+La cota ajustada tiende a la constante [0.220].      
+    
+Monticulo descendente
+         - Cota subestimada f(n): n^(1.1)*log(n)
+         - Cota ajustada g(n): n^(1.24)*log(n)
+         - Cota sobreestimada h(n): n^(1.4)*log(n)
+
+ ______[N]____________[t(n)]_______[t(n)/f(n)]_______[t(n)/g(n)]_____[t(n)/h(n)]______[t<500]_ 
+       500      |        47.459 |    0.31685847 |    0.12191997 |    0.04911050     |  (*)
+      1000      |       110.014 |    0.38087713 |    0.13380861 |    0.04794959     |  (*)
+      2000      |       247.667 |    0.44014960 |    0.14071451 |    0.04500817     |  (*)
+      4000      |       521.000 |    0.47134441 |    0.13636860 |    0.03914897     |
+      8000      |      1096.000 |    0.50122857 |    0.13115626 |    0.03381496     |
+     16000      |      2292.000 |    0.52671225 |    0.13452175 |    0.02886273     |
+     32000      |      4784.000 |    0.54960558 |    0.12729900 |    0.02446280     |
+     64000      |     10002.000 |    0.57187959 |    0.12012495 |    0.02067524     |
+    128000      |     21012.000 |    0.59557413 |    0.11345385 |    0.01748932     |
+    
+La cota ajustada tiende a la constante [0.135].    
+    
+Monticulo aleatorio
+         - Cota subestimada f(n): n^(1.1)*log(n)
+         - Cota ajustada g(n): n^(1.21)*log(n)
+         - Cota sobreestimada h(n): n^(1.3)*log(n)
+
+ ______[N]____________[t(n)]_______[t(n)/f(n)]_______[t(n)/g(n)]_____[t(n)/h(n)]______[t<500]_ 
+       500      |        63.833 |    0.42617895 |    0.21513214 |    0.12296967     |  (*)
+      1000      |       137.575 |    0.47629549 |    0.22278014 |    0.11964002     |  (*)
+      2000      |       296.742 |    0.52736485 |    0.22855877 |    0.11532015     |  (*)
+      4000      |       636.000 |    0.57538397 |    0.23106340 |    0.10953320     |
+      8000      |      1364.000 |    0.62379177 |    0.23211315 |    0.10337646     |
+     16000      |      2925.000 |    0.67217860 |    0.23175626 |    0.09697520     |
+     32000      |      6275.000 |    0.72089779 |    0.23030703 |    0.09054067     |
+     64000      |     13377.000 |    0.76485036 |    0.22641056 |    0.08362584     |
+    128000      |     28770.000 |    0.81547058 |    0.22367384 |    0.07761869     |
+
+La cota ajustada tiende a la constante [0.225].
+
++Conclusión:
+  Teniendo en cuenta los resultados aportados por las tablas y los tiempos
+  obtenidos podemos afirmar lo siguiente:
+  
+  -Se demuestra que la complejidad empírica de crear un montículo a partir de un vector
+   cualquiera de n elementos es igual que la complejidad teórica O(n), como se puede ver
+   en la primera tabla.
+
+  -Teniendo en cuenta que la complejidad teorica de ordenar_montículo es de n*log(n),
+   el resultado obtenido en este estudio con las 3 inicializaciones es peor que el teórico.
+   La complejidad obtenida en las 3 es de n^1.2*log(n) aprox, lo que hace que la complejidad
+   de los algoritmos del estudio sea ligeramente peor que la complejidad teórica n*log(n).
+   
+
+

@@ -1,0 +1,110 @@
+
+#Informe  :
+   El objetivo de esta práctica es estudiar la complejidad computacional
+   empírica de la ordenacion de un vector usando el algoritmo de mergesort
+   mediante vectores en potencia de 2
+
+ +Características de la máquina:
+
+  Equipo: ROG-Zephyrus-g15-GX701LWS
+  SSOO: Ubuntu 22.04.1 LTS 64 bits
+  Procesador:  Ryzen 7 5000
+  Memoria: 16,0 GiB RAM
+  Kernel: 5.15.0-50-generic
+  Compilador: gcc 11.2.0
+
+ +Unidades de medida:
+  Todas las mediciones estan realizadas en microsegundos.
+
+
+ +Método:
+  Se crearan vectores de valores entre -n y n e un vector de tamaño n, para despues ordenarse
+  con el algoritmo de fusion merge sort
+  Cuando el tiempo es menor que 500 (*) se ejecuta un bucle de k repeticiones potencia de 10
+  y luego se hace una media de todos esos tiempos.
+
+ +Resultados:
+
+********* Test Ordenacion *********
+
+Vector desordenado :
+8 -4 -9 -6 -8 -1 3 4 -6 -3
+
+Vector ordenado :
+-9 -8 -6 -6 -4 -3 -1 3 4 8
+
+********* Test Ordenacion *********
+
+
+Vector Ascendente
+         - Cota subestimada f(n): n^(0.9)*log(n)
+         - Cota ajustada g(n): n^(1.2)*log(n)
+         - Cota sobreestimada h(n): n^(1.1)*log(n)
+
+ ______[N]____________[t(n)]_______[t(n)/f(n)]_______[t(n)/g(n)]_____[t(n)/h(n)]______[t<500]_
+       500    	|        20.536	|    0.01230351	|    0.00930198	|    0.00355006	    |  (*)
+      1000    	|        43.330	|    0.01251560	|    0.00917174	|    0.00314378	    |  (*)
+      2000    	|        91.264	|    0.01283829	|    0.00911929	|    0.00280738	    |  (*)
+      4000    	|       192.387	|    0.01329092	|    0.00915087	|    0.00253013	    |  (*)
+      8000    	|       402.691	|    0.01375836	|    0.00918180	|    0.00228007	    |
+     16000    	|       863.000	|    0.01466939	|    0.00948913	|    0.00211635	    |
+     32000    	|      1828.000	|    0.01553876	|    0.00974282	|    0.00195158	    |
+     64000    	|      3825.000	|    0.01633254	|    0.00952603	|    0.00178574	    |
+    128000    	|      8297.000	|    0.01786622	|    0.01052466	|    0.00170056	    |
+    256000    	|     17079.000	|    0.01861122	|    0.00918180 |    0.00154215	    |
+    512000    	|     35366.000	|    0.01956351	|    0.00938180	|    0.00141121	    |
+
+
+        la cota ajustada tiende a la constante [0.092]
+
+
+Vector descendente
+         - Cota subestimada f(n): n^(0.9)*log(n)
+         - Cota ajustada g(n): n^(0.945)*log(n)
+         - Cota sobreestimada h(n): n^(1.1)*log(n)
+
+ ______[N]____________[t(n)]_______[t(n)/f(n)]_______[t(n)/g(n)]_____[t(n)/h(n)]______[t<500]_
+       500      |        45.932 |    0.02751874 |    0.02280535 |    0.00794026     |  (*)
+      1000      |       102.316 |    0.02955334 |    0.02165741 |    0.00742346     |  (*)
+      2000      |       224.864 |    0.03163208 |    0.02246888 |    0.00691706     |  (*)
+      4000      |       481.408 |    0.03325774 |    0.02589813 |    0.00633112     |  (*)
+      8000      |      1028.000 |    0.03512270 |    0.02343953 |    0.00582063     |
+     16000      |      2257.000 |    0.03836479 |    0.02481689 |    0.00553489     |
+     32000      |      4692.000 |    0.03988394 |    0.02500727 |    0.00500920     |
+     64000      |      9938.000 |    0.04243472 |    0.02578952 |    0.00463965     |
+    128000      |     21439.000 |    0.04616535 |    0.02719517 |    0.00439414     |
+    256000      |     44314.000 |    0.04828957 |    0.02757291 |    0.00400134     |
+    512000      |     91652.000 |    0.05069939 |    0.02505986 |    0.00365720     |
+Vector aleatorio
+         - Cota subestimada f(n): n^(0.9)*log(n)
+         - Cota ajustada g(n): n^(1.21)*log(n)
+         - Cota sobreestimada h(n): n^(1.1)*log(n)
+
+         la cota ajustada tiende a la constante [0.025]
+
+ ______[N]____________[t(n)]_______[t(n)/f(n)]_______[t(n)/g(n)]_____[t(n)/h(n)]______[t<500]_
+       500      |        60.295 |    0.03612389 |    0.02130012 |    0.01042319     |  (*)
+      1000      |       132.092 |    0.03815396 |    0.02120995 |    0.00958384     |  (*)
+      2000      |       287.864 |    0.04049442 |    0.02122304 |    0.00885501     |  (*)
+      4000      |       656.000 |    0.04531930 |    0.02239279 |    0.00862723     |
+      8000      |      1411.000 |    0.04820830 |    0.02245738 |    0.00798921     |
+     16000      |      3027.000 |    0.05145335 |    0.02259766 |    0.00742317     |
+     32000      |      6463.000 |    0.05493818 |    0.02274765 |    0.00689992     |
+     64000      |     13846.000 |    0.05912166 |    0.02307923 |    0.00646414     |
+    128000      |     28966.000 |    0.06237351 |    0.02295553 |    0.00593688     |
+    256000      |     60710.000 |    0.06615652 |    0.02295473 |    0.00548182     |
+    512000      |    123969.000 |    0.06857627 |    0.02243293 |    0.00494675     |
+
+         la cota ajustada tiende a la constante [0.022]
+
++Conclusión:
+  Teniendo en cuenta los resultados aportados por las tablas y los tiempos
+  obtenidos podemos afirmar lo siguiente:
+
+  -Se demuestra que la complejidad empírica de la ordenacion por fusion tiende a n * log n
+  independientemete de si esta ordenado de forma ascendente o descendente o aleatoriamente,
+  coincidiendo asi con la teorica
+
+
+
+

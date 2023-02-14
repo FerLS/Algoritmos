@@ -1,0 +1,1 @@
+/usr/bin/cc -g CMakeFiles/Algoritmos4.dir/main.c.o CMakeFiles/Algoritmos4.dir/monticulos.c.o -o Algoritmos4 

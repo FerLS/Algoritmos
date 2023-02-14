@@ -1,0 +1,3 @@
+/home/brais/Escritorio/p4_Algoritmos/cmake-build-debug/CMakeFiles/Algoritmos4.dir
+/home/brais/Escritorio/p4_Algoritmos/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/brais/Escritorio/p4_Algoritmos/cmake-build-debug/CMakeFiles/rebuild_cache.dir
