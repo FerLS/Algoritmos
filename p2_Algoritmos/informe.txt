@@ -1,0 +1,371 @@
+*Grupo 3.1
+*Fernando Álvarez Rodríguez de Legísima 
+*fernando.alvarezr@udc.es
+*Brais Sánchez Ferreiro
+*brais.sferreiro@udc.es
+
+#INFORME PRÁCTICA 2:
+
+El objetivo de la práctica es el calculo de la Complejidad Computacional de los algoritmos de
+ordenación rapida (quicksort) y ordenación por inserción usando un vector de 'n' números enteros.
+
++CARACTERÍSTICAS DE LA MÁQUINA:
+
+Equipo: ROG-Zephyrus-S17-GX701LWS
+SSOO: Ubuntu 22.04.1 LTS 64 bits
+Procesador: Intel® Core™ i7-10750H CPU @ 2.60GHz × 12
+Memoria: 32,0 GiB RAM
+Kernel: 5.15.0-50-generic
+Compilador: gcc 11.2.0
+
++UNIDADES DE MEDIDA:
+Todos los tiempos están expresados en microsegundos (ms).
+
++MÉTODO:
+En esta práctica utilizamos 2 algoritmos para la ordenación de vectores cuyos
+elementos pueden estar ordenados de manera ascendiente, descendiente o aleatoria
+(cabe resaltar que la ordanción de ambos algoritmos es ascendente).
+Dichos algoritmos son: Ordenación por inserción y Ordenación rápida.
+
+K = 1000 <- En caso de que el tiempo de ejecución sea muy pequeño se calculará
+una media de k ejecuciones del algoritmo.
+
++RESULTADOS:
+
+Ordenación por inserción:
+
+ ****************** Ordenación por INSERCION con inicialización ASCENDENTE ******************
+
+  ______[N]___________[Tiempo]______[t(n)/n^0.8]_____[t(n)/n]______[t(n)/n^1.2]_______[t<500]_
+
+        500      |         1.666 |    0.01154779 |    0.00333200 |    0.00096142     |  (*)
+                 |               |               |               |                   |
+       1000      |         3.354 |    0.01335251 |    0.00335400 |    0.00084249     |  (*)
+                 |               |               |               |                   |
+       2000      |         6.704 |    0.01532887 |    0.00335200 |    0.00073299     |  (*)
+                 |               |               |               |                   |
+       4000      |        13.545 |    0.01778816 |    0.00338625 |    0.00064462     |  (*)
+                 |               |               |               |                   |
+       8000      |        26.268 |    0.01981322 |    0.00328350 |    0.00054415     |  (*)
+                 |               |               |               |                   |
+      16000      |        52.934 |    0.02293183 |    0.00330837 |    0.00047730     |  (*)
+                 |               |               |               |                   |
+      32000      |       105.677 |    0.02629423 |    0.00330241 |    0.00041476     |  (*)
+                 |               |               |               |                   |
+
+La cota ajustada tiende a la constante [0.0033].
+
+Cota Subestimada: n^0.8
+Cota Ajustada: n
+Cota Sobrestimada: n^1.2
+
+
+****************** Ordenación por INSERCION con inicialización DESCENDENTE ******************
+
+ ______[N]___________[Tiempo]______[t(n)/n^1.8]___[t(n)/n^2]______[t(n)/[n^2.2]_______[t<500]_
+
+       500      |       301.846 |    0.00418446 |    0.00120738 |    0.00034838     |  (*)
+                |               |               |               |                   |
+      1000      |      1216.000 |    0.00484098 |    0.00121600 |    0.00030545     |
+                |               |               |               |                   |
+      2000      |      4796.000 |    0.00548309 |    0.00119900 |    0.00026219     |
+                |               |               |               |                   |
+      4000      |     19472.000 |    0.00639297 |    0.00121700 |    0.00023167     |
+                |               |               |               |                   |
+      8000      |     78143.000 |    0.00736764 |    0.00122098 |    0.00020234     |
+                |               |               |               |                   |
+     16000      |    312751.000 |    0.00846804 |    0.00122168 |    0.00017625     |
+                |               |               |               |                   |
+     32000      |   1250727.000 |    0.00972507 |    0.00122141 |    0.00015340     |
+                |               |               |               |                   |
+
+La cota ajustada tiende a la constante [0.0012].
+
+Cota Subestimada: n^1.8
+Cota Ajustada: n^2
+Cota Sobrestimada: n^2.2
+
+****************** Ordenación por INSERCION con inicialización ALEATORIA ******************
+
+ ______[N]___________[Tiempo]______[t(n)/n^1.8]_____[t(n)/n^2]______[t(n)/[n^2.2]_____[t<500]_
+
+       500      |       154.582 |    0.00214295 |    0.00061833 |    0.00017841     |  (*)
+                |               |               |               |                   |
+      1000      |       605.000 |    0.00240855 |    0.00060500 |    0.00015197     |
+                |               |               |               |                   |
+      2000      |      2405.000 |    0.00274955 |    0.00060125 |    0.00013148     |
+                |               |               |               |                   |
+      4000      |      9824.000 |    0.00322538 |    0.00061400 |    0.00011688     |
+                |               |               |               |                   |
+      8000      |     39059.000 |    0.00368264 |    0.00061030 |    0.00010114     |
+                |               |               |               |                   |
+     16000      |    156593.000 |    0.00423991 |    0.00061169 |    0.00008825     |
+                |               |               |               |                   |
+     32000      |    620428.000 |    0.00482416 |    0.00060589 |    0.00007610     |
+                |               |               |               |                   |
+
+La cota ajustada tiende a la constante [0.00061].
+
+Cota Subestimada: n^1.8
+Cota Ajustada: n^2
+Cota Sobrestimada: n^2.2
+
+
+Ahora calcularemos la Complejidad Computacional de la Ordenacion Rapida (Quick sort),
+con los siguientes umbrales : 1, 10 y 100
+
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<UMBRAL=1>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+****************** Ordenación RAPIDA con inicialización ASCENDENTE ******************
+
+ ______[N]___________[Tiempo]____[t(n)/n^0.8]__[t(n)/n^0.95 * log2 n]__[t(n)/n^1.2]____[t<500]_
+
+       500      |        24.768 |    0.17167811 |    0.00753843 |    0.01429312     |  (*)
+                |               |               |               |                   |
+      1000      |        51.986 |    0.20695999 |    0.00736843 |    0.01305829     |  (*)
+                |               |               |               |                   |
+      2000      |       109.030 |    0.24929985 |    0.00726989 |    0.01192093     |  (*)
+                |               |               |               |                   |
+      4000      |       229.040 |    0.30078996 |    0.00724458 |    0.01090032     |  (*)
+                |               |               |               |                   |
+      8000      |       480.136 |    0.36215316 |    0.00725488 |    0.00994618     |  (*)
+                |               |               |               |                   |
+     16000      |      1027.000 |    0.44491235 |    0.00745746 |    0.00926033     |
+                |               |               |               |                   |
+     32000      |      2086.000 |    0.51903222 |    0.00731682 |    0.00818718     |
+                |               |               |               |                   |
+
+La cota ajustada tiende a la constante [0.0073].
+
+Cota Subestimada:  n^0.8
+Cota Ajustada:  n^0.95 * log2 n
+Cota Sobreestimada:  n^1.2
+
+****************** Ordenación RAPIDA con inicialización DESCENDENTE ******************
+
+ ______[N]___________[Tiempo]______[t(n)/n]_______[t(n)/n^1.06]___[t(n)/n^1.3]______[t<500]_
+
+       500      |        25.794 |    0.05158800 |    0.03553125 |    0.00799572     |  (*)
+                |               |               |               |                   |
+      1000      |        53.698 |    0.05369800 |    0.03547792 |    0.00676018     |  (*)
+                |               |               |               |                   |
+      2000      |       112.027 |    0.05601350 |    0.03550021 |    0.00572775     |  (*)
+                |               |               |               |                   |
+      4000      |       235.653 |    0.05891325 |    0.03581701 |    0.00489322     |  (*)
+                |               |               |               |                   |
+      8000      |       491.159 |    0.06139488 |    0.03580525 |    0.00414195     |  (*)
+                |               |               |               |                   |
+     16000      |      1034.000 |    0.06462500 |    0.03615375 |    0.00354132     |
+                |               |               |               |                   |
+     32000      |      2129.000 |    0.06653125 |    0.03570398 |    0.00296129     |
+                |               |               |               |                   |
+
+La cota ajustada tiende a la constante [0.0035].
+
+Cota Subestimada:  n
+Cota Ajustada:  n^1.06
+Cota Sobreestimada:  n^1.3
+
+****************** Ordenación RAPIDA con inicialización ALEATORIA ******************
+
+ ______[N]___________[Tiempo]______[t(n)/n]_______[t(n)/n^1.1]______[t(n)/n^1.4]______[t<500]_
+
+       500      |        41.047 |    0.08209400 |    0.04409755 |    0.00683476     |  (*)
+                |               |               |               |                   |
+      1000      |        88.106 |    0.08810600 |    0.04415760 |    0.00555911     |  (*)
+                |               |               |               |                   |
+      2000      |       189.667 |    0.09483350 |    0.04434644 |    0.00453471     |  (*)
+                |               |               |               |                   |
+      4000      |       406.544 |    0.10163600 |    0.04434468 |    0.00368319     |  (*)
+                |               |               |               |                   |
+      8000      |       878.000 |    0.10975000 |    0.04467819 |    0.00301418     |
+                |               |               |               |                   |
+     16000      |      1845.000 |    0.11531250 |    0.04379902 |    0.00240009     |
+                |               |               |               |                   |
+     32000      |      3897.000 |    0.12178125 |    0.04315841 |    0.00192097     |
+                |               |               |               |                   |
+
+La cota ajustada tiende a la constante [0.044].
+
+Cota Subestimada: n
+Cota Ajustada: n^1.1
+Cota Sobrestimada: n^1.4
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<UMBRAL=10>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+****************** Ordenación RAPIDA con inicialización ASCENDENTE ******************
+
+ ______[N]___________[Tiempo]____[t(n)/n^0.8]__[t(n)/n^0.99 * log2 n]__[t(n)/n^1.2]____[t<500]_
+
+       500      |        13.920 |    0.09648576 |    0.00330423 |    0.00803295     |  (*)
+                |               |               |               |                   |
+      1000      |        30.682 |    0.12214724 |    0.00329892 |    0.00770697     |  (*)
+                |               |               |               |                   |
+      2000      |        66.635 |    0.15236261 |    0.00327826 |    0.00728562     |  (*)
+                |               |               |               |                   |
+      4000      |       144.726 |    0.19006343 |    0.00328523 |    0.00688771     |  (*)
+                |               |               |               |                   |
+      8000      |       311.279 |    0.23478905 |    0.00328316 |    0.00644825     |  (*)
+                |               |               |               |                   |
+     16000      |       666.000 |    0.28852154 |    0.00328345 |    0.00600524     |
+                |               |               |               |                   |
+     32000      |      1482.000 |    0.36874677 |    0.00343281 |    0.00581659     |
+                |               |               |               |                   |
+
+La cota ajustada tiende a la constante [0.0032].
+
+Cota Subestimada:  n^0.8
+Cota Ajustada:  n^0.99 * log2 n
+Cota Sobreestimada:  n^1.2
+
+****************** Ordenación RAPIDA con inicialización DESCENDENTE ******************
+
+ ______[N]___________[Tiempo]______[t(n)/n]_______[t(n)/n^1.1]____[t(n)/n^1.3]______[t<500]_
+
+       500      |        16.093 |    0.03218600 |    0.01728901 |    0.00498857     |  (*)
+                |               |               |               |                   |
+      1000      |        34.674 |    0.03467400 |    0.01737817 |    0.00436520     |  (*)
+                |               |               |               |                   |
+      2000      |        74.819 |    0.03740950 |    0.01749359 |    0.00382537     |  (*)
+                |               |               |               |                   |
+      4000      |       160.670 |    0.04016750 |    0.01752543 |    0.00333624     |  (*)
+                |               |               |               |                   |
+      8000      |       343.572 |    0.04294650 |    0.01748311 |    0.00289735     |  (*)
+                |               |               |               |                   |
+     16000      |       753.000 |    0.04706250 |    0.01787570 |    0.00257893     |
+                |               |               |               |                   |
+     32000      |      1567.000 |    0.04896875 |    0.01735418 |    0.00217959     |
+                |               |               |               |                   |
+
+La cota ajustada tiende a la constante [0.017].
+
+Cota Subestimada:  n
+Cota Ajustada:  n^1.1
+Cota Sobreestimada:  n^1.3
+
+****************** Ordenación RAPIDA con inicialización ALEATORIA ******************
+
+ ______[N]___________[Tiempo]______[t(n)/n]_______[t(n)/n^1.14]______[t(n)/n^1.4]______[t<500]_
+
+       500      |        32.706 |    0.06541200 |    0.02740322 |    0.00544590     |  (*)
+                |               |               |               |                   |
+      1000      |        72.538 |    0.07253800 |    0.02757818 |    0.00457684     |  (*)
+                |               |               |               |                   |
+      2000      |       159.179 |    0.07958950 |    0.02746070 |    0.00380578     |  (*)
+                |               |               |               |                   |
+      4000      |       347.074 |    0.08676850 |    0.02716900 |    0.00314440     |  (*)
+                |               |               |               |                   |
+      8000      |       752.000 |    0.09400000 |    0.02671131 |    0.00258162     |
+                |               |               |               |                   |
+     16000      |      1605.000 |    0.10031250 |    0.02586892 |    0.00208789     |
+                |               |               |               |                   |
+     32000      |      3447.000 |    0.10771875 |    0.02520985 |    0.00169915     |
+                |               |               |               |                   |
+
+La cota ajustada tiende a la constante [0.027].
+
+Cota Subestimada: n
+Cota Ajustada: n^1.14
+Cota Sobrestimada: n^1.4
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<UMBRAL=100>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+****************** Ordenación RAPIDA con inicialización ASCENDENTE ******************
+
+ ______[N]___________[Tiempo]____[t(n)/n^0.8]__[t(n)/n^1.06*log2(n)]__[t(n)/n^1.3]____[t<500]_
+
+       500      |         6.319 |    0.04379982 |    0.00097085 |    0.00195879     |  (*)
+                |               |               |               |                   |
+      1000      |        15.378 |    0.06122092 |    0.00101950 |    0.00193598     |  (*)
+                |               |               |               |                   |
+      2000      |        36.466 |    0.08338043 |    0.00105380 |    0.00186444     |  (*)
+                |               |               |               |                   |
+      4000      |        83.467 |    0.10961420 |    0.00106021 |    0.00173315     |  (*)
+                |               |               |               |                   |
+      8000      |       189.211 |    0.14271657 |    0.00106383 |    0.00159562     |  (*)
+                |               |               |               |                   |
+     16000      |       425.283 |    0.18423920 |    0.00106474 |    0.00145654     |  (*)
+                |               |               |               |                   |
+     32000      |       959.000 |    0.23861549 |    0.00107463 |    0.00133390     |
+                |               |               |               |                   |
+
+La cota ajustada tiende a la constante [0.001].
+
+Cota Subestimada:  n^0.8
+Cota Ajustada:  n^1.06*log2(n)
+Cota Sobreestimada:  n^1.3
+
+
+****************** Ordenación RAPIDA con inicialización DESCENDENTE ******************
+
+ ______[N]___________[Tiempo]______[t(n)/n]_______[t(n)/n^1.1]_____[t(n)/n^1.3]______[t<500]_
+
+       500      |         9.991 |    0.01998200 |    0.01073351 |    0.00309705     |  (*)
+                |               |               |               |                   |
+      1000      |        20.729 |    0.02072900 |    0.01038911 |    0.00260963     |  (*)
+                |               |               |               |                   |
+      2000      |        44.766 |    0.02238300 |    0.01046683 |    0.00228881     |  (*)
+                |               |               |               |                   |
+      4000      |        97.726 |    0.02443150 |    0.01065968 |    0.00202923     |  (*)
+                |               |               |               |                   |
+      8000      |       215.917 |    0.02698962 |    0.01098722 |    0.00182083     |  (*)
+                |               |               |               |                   |
+     16000      |       503.000 |    0.03143750 |    0.01194087 |    0.00172271     |
+                |               |               |               |                   |
+     32000      |      1062.000 |    0.03318750 |    0.01176141 |    0.00147717     |
+                |               |               |               |                   |
+
+La cota ajustada tiende a la constante [0.011].
+
+Cota Subestimada:  n
+Cota Ajustada:  n^1.1
+Cota Sobreestimada:  n^1.3
+
+
+****************** Ordenación RAPIDA con inicialización ALEATORIA ******************
+
+ ______[N]___________[Tiempo]______[t(n)/n]_______[t(n)/n^1.1]______[t(n)/n^1.4]______[t<500]_
+
+       500      |        37.498 |    0.07499600 |    0.04028479 |    0.00624382     |  (*)
+                |               |               |               |                   |
+      1000      |        82.627 |    0.08262700 |    0.04141160 |    0.00521341     |  (*)
+                |               |               |               |                   |
+      2000      |       177.767 |    0.08888350 |    0.04156408 |    0.00425020     |  (*)
+                |               |               |               |                   |
+      4000      |       385.605 |    0.09640125 |    0.04206072 |    0.00349348     |  (*)
+                |               |               |               |                   |
+      8000      |       832.000 |    0.10400000 |    0.04233742 |    0.00285626     |
+                |               |               |               |                   |
+     16000      |      1773.000 |    0.11081250 |    0.04208979 |    0.00230643     |
+                |               |               |               |                   |
+     32000      |      3740.000 |    0.11687500 |    0.04141967 |    0.00184358     |
+                |               |               |               |                   |
+
+La cota ajustada tiende a la constante [0.041].
+
+Cota Subestimada:  n
+Cota Ajustada:  n^1.1
+Cota Sobreestimada:  n^1.4
+
++CONCLUSIÓN:
+
+Teniendo en cuenta los datos y los tiempos extraídos de las pruebas
+relizadas, podemos afirmar:
+
+-El algoritmo de insercción es más sencillo de implementar que
+la ordenación rápida.
+
+-El algoritmo de insercción no es eficiente con vectores muy largos,
+mientras que el rápido trabaja bien con todos esos los tamaños.
+
++CON QUE UMBRAL FUNCIONA MEJOR ? PORQUE?
+
+-Funciona mejor con el umbral 100, podemos ver que entre los tiempos de ejecucion
+que es el mas rapido, y esto se debe a que la ordenacion rapida es mas lenta ordenando el array
+debido a su estructura (divide y venceras), por eso a partir de que el subarray de tamaño n es menor
+que el umbral(100 en este caso), se lo deja a la ordenacion por inserccion que es buena ordenando
+vectores pequeños y ya ordenados o lo mas ordenados posibles.
+
+En caso de el umbral 1 lo hace _todo
+el algoritmo de ordenacion rapido, y el de umbral 10 es demasiado pequeño para las enormes n del array principal.
