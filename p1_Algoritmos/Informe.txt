@@ -1,0 +1,125 @@
+Fernando Álvarez Rodríguez de Legísima
+Brais Sánchez Ferreiro
+
+Los datos del equipo utilizado para ejecutar estas mediciones son:
+
+Equipo Asus Rog Zephyrus (Portátil)
+SSOO: LinuxMint 64bits
+Procesador: AMD Ryzen 7 5800HS with Radeon Graphics  (16 CPUs), ~3.2GHz
+Memoria: 16384MB RAM
+
+En esta práctica utilizaremos 3 algoritmos para calcular el n-ésimo término de la sucesión de Fibonacci,
+analizando los tiempos de cada uno de ellos.
+
+Todas las mediciones están ejecutadas en microsegundos.
+(*) El tiempo fue menor a 500 microsegundos y se introdujo en un bucle que ejecuta el alogoritmo 1000 veces
+y luego hace una media aritmética del tiempo total.
+
+
+Para el primer agoritmo Fib1:
+
+La cota ajustada tiende a un valor contenido en el intervalo [0.003184]
+
+_______________________________________ Test con Fib1 __________________________________________ 
+ ______[N]___________[Tiempo]_______[Ajustada]_____[Subestimada]____[SobreEstimada]_____[t<500]_ 
+
+         2    	|         0.009	|      0.003438	|      0.007438	|      0.002250	    |  (*)
+    		|               |               |               |                   |
+         4    	|         0.021	|      0.003064	|      0.014343	|      0.001313	    |  (*)
+    		|               |               |               |                   |
+         8    	|         0.152	|      0.003236	|      0.070909	|      0.000594	    |  (*)
+    		|               |               |               |                   |
+        16    	|         7.278	|      0.003298	|      1.583904	|      0.000111	    |  (*)
+    		|               |               |               |                   |
+        32    	|     14036.000	|      0.002882	|    664.778757	|      0.000003	    |
+    		|               |               |               |                   |
+
+Cota ajustada: 		O(n)=t(n)/((1+sqrt(5)/2)^n)
+Cota subestimada: 	O(n)=t(n)/1.1^n
+Cota sobreestimada: 	O(n)=t(n)/2^n
+
+
+Para el segundo algoritmo fib2:
+
+La cota ajustada tiende a un valor contenido en el intervalo [0,002744]
+
+ _______________________________________ Test con Fib2 _________________________________________ 
+ ______[N]___________[Tiempo]_______[Ajustada]_____[Subestimada]____[SobreEstimada]_____[t<500]_ 
+
+      1000    	|         2.753	|      0.002753	|      0.010960	|      0.000918	    |  (*)
+    		|               |               |               |                   |
+     10000    	|        27.411	|      0.002741	|      0.017295	|      0.000685	    |  (*)
+    		|               |               |               |                   |
+    100000    	|       273.788	|      0.002738	|      0.027379	|      0.000548	    |  (*)
+    		|               |               |               |                   |
+   1000000    	|      2747.000	|      0.002747	|      0.043537	|      0.000458	    |
+    		|               |               |               |                   |
+  10000000    	|     27406.000	|      0.002741	|      0.068841	|      0.000392	    |
+    		|               |               |               |                   |
+
+Cota  ajustada:		O(n)=t(n)/n
+Cota subestimada:	O(n)=t(n)/n^0.8
+Cota sobreestimada:	O(n)=t(n)/n*log(n)
+
+
+Para el tercer algoritmo fib3:
+
+La cota ajustada tiende a un valor contenido en el intervalo [0,0181652]
+
+ _______________________________________ Test con Fib3 _________________________________________ 
+ ______[N]___________[Tiempo]_______[Ajustada]_____[Subestimada]____[SobreEstimada]_____[t<500]_ 
+
+      1000    	|         0.051	|      0.017000	|      0.029445	|      0.001613	    |  (*)
+    		|               |               |               |                   |
+     10000    	|         0.069	|      0.017250	|      0.034500	|      0.000690	    |  (*)
+    		|               |               |               |                   |
+    100000    	|         0.098	|      0.019600	|      0.043827	|      0.000310	    |  (*)
+    		|               |               |               |                   |
+   1000000    	|         0.113	|      0.018833	|      0.046132	|      0.000113	    |  (*)
+    		|               |               |               |                   |
+  10000000    	|         0.127	|      0.018143	|      0.048001	|      0.000040	    |  (*)
+    		|               |               |               |                   |
+
+Cota ajustada:		O(n)=t(n)/log(n)
+Cota subestimada:	O(n)=t(n)/sqrt(log(n))
+Cota sobreestimada:	O(n)=t(n)/n^0.5
+
+
+
+CONCLUSIÓN:
+
+Después de ejecutar y estudiar cada uno de los tres algoritmos, el resultado final ha sido 
+que el tercer algoritmo ha sido el mas eficiente, ya que aunque vaya con n muy altos su 
+tiempo no aumenta considerablemente. El segundo es algo mas eficiente que el primero, pero
+su tiempo sigue siendo bastante malo. Y el peor ha sido el primero, ya que con n muy bajos es 
+casi instantáneo, pero con n muy grandes su tiempo aumenta exponecialmente.
+
+De los tres algoritmos, el primero tienes una complejidad computacional t(n)=O(2^n), el segundo
+t(n)=O(n*log(n)) y el tercero t(n)=O(log(n)).
+
+
+Esto es la tabla del test previo para comprobar que los tres algoritmos funcionaban bien.
+
+n	|	fib1(n)		fib2()		fib(3)
+-----------------------------------------------------------
+1	|	1		1		1
+2	|	1		1		1
+3	|	2		2		2
+4	|	3		3		3
+5	|	5		5		5
+6	|	8		8		8
+7	|	13		13		13
+8	|	21		21		21
+9	|	34		34		34
+10	|	55		55		55
+11	|	89		89		89
+12	|	144		144		144
+13	|	233		233		233
+14	|	377		377		377
+15	|	610		610		610
+16	|	987		987		987
+17	|	1597		1597		1597
+18	|	2584		2584		2584
+19	|	4181		4181		4181
+20	|	6765		6765		6765
+
