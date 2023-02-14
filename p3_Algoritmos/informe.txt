@@ -1,0 +1,101 @@
+-Grupo 3.1-
+ Fernando Álvarez Rodríguez de Legísima 
+ fernando.alvarezr@udc.es
+ Brais Sánchez Ferreiro
+ brais.sferreiro@udc.es
+
+#Informe práctica 3:
+   El objetivo de esta práctica es estudiar la complejidad computacional 
+   empírica de las operaciones de insertar y buscar en árboles binarios 
+   usando números enteros.
+
+ +Características de la máquina:
+ 
+  Equipo: ROG-Zephyrus-S17-GX701LWS
+  SSOO: Ubuntu 22.04.1 LTS 64 bits
+  Procesador: Intel® Core™ i7-10750H CPU @ 2.60GHz × 12
+  Memoria: 32,0 GiB RAM
+  Kernel: 5.15.0-50-generic
+  Compilador: gcc 11.2.0
+ 
+ +Unidades de medida:
+  Todas las mediciones estan realizadas en microsegundos.
+  
+ +Método:
+  En esta práctica 3 utilizamos dos algoritmos de insercción y búsqueda
+  de elementos en un árbol binario.
+  
+  Se lleva a cabo un estudio de diversos valores de n, en la insercción se
+  insertan elementos de aleatorios de [-n,....,n] y luego se buscan otros n
+  elementos aleatorios de otro vector generado nuevamente.
+  
+  En este estudio desestimamos los casos en los que el tiempo es menor que 
+  500 microsegundos, debido a que queríamos realizar el estudio en n grandes,
+  con n=8000. Tras realizar varias pruebas en
+  las tablas llegamos a la conclusión de que los tiempos empiezan a ser 
+  mayores de 500 a partir de 4000 con las especificaciones de esta maquina,
+  aun asi si existiera el caso de que hubiera otras n menores con tiempos < 500
+  se mostrarian.
+  
+ +Resultados:
+
+Tiempos de Inserción y Búsqueda:
+
+ ______[N]__________[t_ins(n)]______[t_bus(n)]__
+      4000      |           622 |           627 |
+      8000      |          1463 |          1448 |
+     16000      |          3269 |          3071 |
+     32000      |          7780 |          7154 |
+     64000      |         18825 |         17384 |
+    128000      |         42091 |         38677 |
+    256000      |         97058 |         88805 |
+
+Inserción de n elementos:
+
+         - Cota subestimada f(n): n^(1.1)
+         - Cota ajustada g(n): n^(1.19)
+         - Cota sobreestimada h(n): n^(1.3)
+
+ ______[N]____________[t(n)]_______[t(n)/f(n)]_______[t(n)/g(n)]_____[t(n)/h(n)]_____ 
+      4000      |       622.000 |    0.06784602 |    0.03216170 |    0.01291553     |
+      8000      |      1400.000 |    0.07124084 |    0.03172860 |    0.01180622     |
+     16000      |      3242.000 |    0.07696283 |    0.03220403 |    0.01110343     |
+     32000      |      7838.000 |    0.08680411 |    0.03412532 |    0.01090210     |
+     64000      |     18425.000 |    0.09519399 |    0.03516036 |    0.01040815     |
+    128000      |     42142.000 |    0.10157438 |    0.03524806 |    0.00966812     |
+    256000      |     95598.000 |    0.10749415 |    0.03504639 |    0.00890711     |
+
+La cota ajutada tiende a la constante [0.035]
+
+Búsqueda de n elementos:
+
+         - Cota subestimada f(n): n^(1.1)
+         - Cota ajustada g(n): n^(1.23)
+         - Cota sobreestimada h(n): n^(1.3)
+
+ ______[N]____________[t(n)]_______[t(n)/f(n)]_______[t(n)/g(n)]_____[t(n)/h(n)]_____ 
+      4000      |       593.000 |    0.06468278 |    0.02308110 |    0.01231336     |
+      8000      |      1313.000 |    0.06681373 |    0.02214763 |    0.01107255     |
+     16000      |      2994.000 |    0.07107548 |    0.02186480 |    0.01025406     |
+     32000      |      7453.000 |    0.08254032 |    0.02253569 |    0.01036660     |
+     64000      |     16693.000 |    0.08624550 |    0.02258427 |    0.00942976     |
+    128000      |     37684.000 |    0.09082931 |    0.02202150 |    0.00864538     |
+    256000      |     87611.000 |    0.09851326 |    0.02129677 |    0.00816294     |
+
+
+La cota ajustada tiende a la constante [0.022].
+
+ +Conclusión:
+  Teniendo en cuenta los resultados aportados por las tablas y los tiempos
+  obtenidos podemos afirmar lo siguiente:
+  
+  -Podemos afirmar que el algoritmo de búsqueda es más rápido que el de insercción.
+   Esto es debido a que el algoritmo de insercción requiere una operación de reserva
+   de memoria para crear los nodos del árbol, que sigue siendo más costoso que el peor
+   caso de búsqueda, que es cuando el elemento no está en el árbol, que tiene que 
+   recorrer la altura del mismo.
+
+  -Teniendo en cuenta que la complejidad teorica de tanto la busqueda como la insercion
+  es de O(log n) para el caso medio y O(n)  para el peor caso,podemos afirmar que
+  el medido en esta practica es levemente peor (n = 1.2 aprox), en un punto entre
+  el peor y el medio teorico.
