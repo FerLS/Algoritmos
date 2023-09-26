@@ -1,4 +1,4 @@
-# Algoritmos
+# Algoritmos - UDC
 
 Prácticas Algoritmos (curso 2022/23)
 
